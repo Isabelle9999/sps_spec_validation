@@ -1,0 +1,2 @@
+num_requirements,num_real_llm_specs,parse_success_rate,mean_score,median_score,high_risk_count,medium_risk_count,low_risk_count,mean_coverage_rate,mean_agreement_rate,total_under_constrained_count,total_over_constrained_count,smt_counterexample_rate,metamorphic_violation_rate
+7,20,0.6666666666666666,87.340625,100.0,5,0,15,0.97,0.823625,7055,0,0.25,0.0

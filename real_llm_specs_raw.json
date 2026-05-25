@@ -1,0 +1,1803 @@
+[
+  {
+    "requirement_id": "R01",
+    "mode": "direct_translation",
+    "spec_name": "r01_biosecurity_access_control",
+    "spec": {
+      "op": "AND",
+      "args": [
+        {
+          "op": "GE",
+          "args": [
+            {
+              "op": "FIELD",
+              "path": [
+                "user",
+                "clearance"
+              ]
+            },
+            {
+              "op": "FIELD",
+              "path": [
+                "record",
+                "risk_level"
+              ]
+            }
+          ]
+        },
+        {
+          "op": "EQ",
+          "args": [
+            {
+              "op": "FIELD",
+              "path": [
+                "user",
+                "training_completed"
+              ]
+            },
+            {
+              "op": "CONST",
+              "value": true
+            }
+          ]
+        },
+        {
+          "op": "EQ",
+          "args": [
+            {
+              "op": "FIELD",
+              "path": [
+                "user",
+                "approval_active"
+              ]
+            },
+            {
+              "op": "CONST",
+              "value": true
+            }
+          ]
+        }
+      ]
+    },
+    "explanation": "Requires that the user's clearance level is greater than or equal to the record's risk level, the user has completed training, and the user has an active approval.",
+    "confidence": 1.0,
+    "raw_response": "{\"requirement_id\": \"R01\", \"candidates\": [{\"spec_name\": \"r01_biosecurity_access_control\", \"spec\": {\"op\": \"AND\", \"args\": [{\"op\": \"GE\", \"left\": {\"op\": \"FIELD\", \"path\": \"user.clearance\"}, \"right\": {\"op\": \"FIELD\", \"path\": \"record.risk_level\"}}, {\"op\": \"EQ\", \"left\": {\"op\": \"FIELD\", \"path\": \"user.training_completed\"}, \"right\": {\"op\": \"CONST\", \"value\": true}}, {\"op\": \"EQ\", \"left\": {\"op\": \"FIELD\", \"path\": \"user.approval_active\"}, \"right\": {\"op\": \"CONST\", \"value\": true}}]}, \"explanation\": \"Requires that the user's clearance level is greater than or equal to the record's risk level, the user has completed training, and the user has an active approval.\", \"confidence\": 1.0}]}",
+    "parse_success": true,
+    "parse_error": ""
+  },
+  {
+    "requirement_id": "R01",
+    "mode": "obligation_guided",
+    "spec_name": "biosecurity_access_control",
+    "spec": {
+      "op": "AND",
+      "args": [
+        {
+          "op": "GE",
+          "args": [
+            {
+              "op": "FIELD",
+              "path": [
+                "user",
+                "clearance"
+              ]
+            },
+            {
+              "op": "FIELD",
+              "path": [
+                "record",
+                "risk_level"
+              ]
+            }
+          ]
+        },
+        {
+          "op": "EQ",
+          "args": [
+            {
+              "op": "FIELD",
+              "path": [
+                "user",
+                "training_completed"
+              ]
+            },
+            {
+              "op": "CONST",
+              "value": true
+            }
+          ]
+        },
+        {
+          "op": "EQ",
+          "args": [
+            {
+              "op": "FIELD",
+              "path": [
+                "user",
+                "approval_active"
+              ]
+            },
+            {
+              "op": "CONST",
+              "value": true
+            }
+          ]
+        }
+      ]
+    },
+    "explanation": "Mandates that the user's clearance level is greater than or equal to the record's risk level (R01-O1), their training is completed (R01-O2), and their approval is active (R01-O3).",
+    "confidence": 1.0,
+    "raw_response": "{\"requirement_id\": \"R01\", \"candidates\": [{\"spec_name\": \"biosecurity_access_control\", \"spec\": {\"op\": \"AND\", \"args\": [{\"op\": \"GE\", \"left\": {\"op\": \"FIELD\", \"path\": \"user.clearance\"}, \"right\": {\"op\": \"FIELD\", \"path\": \"record.risk_level\"}}, {\"op\": \"EQ\", \"left\": {\"op\": \"FIELD\", \"path\": \"user.training_completed\"}, \"right\": {\"op\": \"CONST\", \"value\": true}}, {\"op\": \"EQ\", \"left\": {\"op\": \"FIELD\", \"path\": \"user.approval_active\"}, \"right\": {\"op\": \"CONST\", \"value\": true}}]}, \"explanation\": \"Mandates that the user's clearance level is greater than or equal to the record's risk level (R01-O1), their training is completed (R01-O2), and their approval is active (R01-O3).\", \"confidence\": 1.0}]}",
+    "parse_success": true,
+    "parse_error": ""
+  },
+  {
+    "requirement_id": "R01",
+    "mode": "adversarial_review",
+    "spec_name": "R01_biological_record_access_control",
+    "spec": {
+      "op": "AND",
+      "args": [
+        {
+          "op": "GE",
+          "args": [
+            {
+              "op": "FIELD",
+              "path": [
+                "user",
+                "clearance"
+              ]
+            },
+            {
+              "op": "FIELD",
+              "path": [
+                "record",
+                "risk_level"
+              ]
+            }
+          ]
+        },
+        {
+          "op": "EQ",
+          "args": [
+            {
+              "op": "FIELD",
+              "path": [
+                "user",
+                "training_completed"
+              ]
+            },
+            {
+              "op": "CONST",
+              "value": true
+            }
+          ]
+        },
+        {
+          "op": "EQ",
+          "args": [
+            {
+              "op": "FIELD",
+              "path": [
+                "user",
+                "approval_active"
+              ]
+            },
+            {
+              "op": "CONST",
+              "value": true
+            }
+          ]
+        }
+      ]
+    },
+    "explanation": "Ensures that access is only granted if the user's clearance is greater than or equal to the record's risk level, training is completed, and approval is currently active.",
+    "confidence": 1.0,
+    "raw_response": "{\"requirement_id\": \"R01\", \"candidates\": [{\"spec_name\": \"R01_biological_record_access_control\", \"spec\": {\"op\": \"AND\", \"args\": [{\"op\": \"GE\", \"left\": {\"op\": \"FIELD\", \"path\": \"user.clearance\"}, \"right\": {\"op\": \"FIELD\", \"path\": \"record.risk_level\"}}, {\"op\": \"EQ\", \"left\": {\"op\": \"FIELD\", \"path\": \"user.training_completed\"}, \"right\": {\"op\": \"CONST\", \"value\": true}}, {\"op\": \"EQ\", \"left\": {\"op\": \"FIELD\", \"path\": \"user.approval_active\"}, \"right\": {\"op\": \"CONST\", \"value\": true}}]}, \"explanation\": \"Ensures that access is only granted if the user's clearance is greater than or equal to the record's risk level, training is completed, and approval is currently active.\", \"confidence\": 1.0}]}",
+    "parse_success": true,
+    "parse_error": ""
+  },
+  {
+    "requirement_id": "R02",
+    "mode": "direct_translation",
+    "spec_name": "routine_internal_research_access_control",
+    "spec": {
+      "op": "AND",
+      "args": [
+        {
+          "op": "NEQ",
+          "args": [
+            {
+              "op": "FIELD",
+              "path": [
+                "user",
+                "role"
+              ]
+            },
+            {
+              "op": "CONST",
+              "value": "external"
+            }
+          ]
+        },
+        {
+          "op": "EQ",
+          "args": [
+            {
+              "op": "FIELD",
+              "path": [
+                "user",
+                "training_completed"
+              ]
+            },
+            {
+              "op": "CONST",
+              "value": true
+            }
+          ]
+        },
+        {
+          "op": "EQ",
+          "args": [
+            {
+              "op": "FIELD",
+              "path": [
+                "user",
+                "approval_active"
+              ]
+            },
+            {
+              "op": "CONST",
+              "value": true
+            }
+          ]
+        }
+      ]
+    },
+    "explanation": "Ensures that external collaborators are excluded, and that training has been completed and approval is currently active for routine internal research access.",
+    "confidence": 1.0,
+    "raw_response": "{\"requirement_id\": \"R02\", \"candidates\": [{\"spec_name\": \"routine_internal_research_access_control\", \"spec\": {\"op\": \"AND\", \"args\": [{\"op\": \"NEQ\", \"left\": {\"op\": \"FIELD\", \"path\": \"user.role\"}, \"right\": {\"op\": \"CONST\", \"value\": \"external\"}}, {\"op\": \"EQ\", \"left\": {\"op\": \"FIELD\", \"path\": \"user.training_completed\"}, \"right\": {\"op\": \"CONST\", \"value\": true}}, {\"op\": \"EQ\", \"left\": {\"op\": \"FIELD\", \"path\": \"user.approval_active\"}, \"right\": {\"op\": \"CONST\", \"value\": true}}]}, \"explanation\": \"Ensures that external collaborators are excluded, and that training has been completed and approval is currently active for routine internal research access.\", \"confidence\": 1.0}]}",
+    "parse_success": true,
+    "parse_error": ""
+  },
+  {
+    "requirement_id": "R02",
+    "mode": "obligation_guided",
+    "spec_name": "routine_internal_research_access",
+    "spec": {
+      "op": "AND",
+      "args": [
+        {
+          "op": "NEQ",
+          "args": [
+            {
+              "op": "FIELD",
+              "path": [
+                "user",
+                "role"
+              ]
+            },
+            {
+              "op": "CONST",
+              "value": "external"
+            }
+          ]
+        },
+        {
+          "op": "EQ",
+          "args": [
+            {
+              "op": "FIELD",
+              "path": [
+                "user",
+                "training_completed"
+              ]
+            },
+            {
+              "op": "CONST",
+              "value": true
+            }
+          ]
+        },
+        {
+          "op": "EQ",
+          "args": [
+            {
+              "op": "FIELD",
+              "path": [
+                "user",
+                "approval_active"
+              ]
+            },
+            {
+              "op": "CONST",
+              "value": true
+            }
+          ]
+        }
+      ]
+    },
+    "explanation": "Enforces that the user is not an external collaborator, has completed the required training, and has an active approval status.",
+    "confidence": 1.0,
+    "raw_response": "{\"requirement_id\": \"R02\", \"candidates\": [{\"spec_name\": \"routine_internal_research_access\", \"spec\": {\"op\": \"AND\", \"args\": [{\"op\": \"NEQ\", \"left\": {\"op\": \"FIELD\", \"path\": \"user.role\"}, \"right\": {\"op\": \"CONST\", \"value\": \"external\"}}, {\"op\": \"EQ\", \"left\": {\"op\": \"FIELD\", \"path\": \"user.training_completed\"}, \"right\": {\"op\": \"CONST\", \"value\": true}}, {\"op\": \"EQ\", \"left\": {\"op\": \"FIELD\", \"path\": \"user.approval_active\"}, \"right\": {\"op\": \"CONST\", \"value\": true}}]}, \"explanation\": \"Enforces that the user is not an external collaborator, has completed the required training, and has an active approval status.\", \"confidence\": 1.0}]}",
+    "parse_success": true,
+    "parse_error": ""
+  },
+  {
+    "requirement_id": "R02",
+    "mode": "adversarial_review",
+    "spec_name": "internal_research_access_control",
+    "spec": {
+      "op": "AND",
+      "args": [
+        {
+          "op": "NEQ",
+          "args": [
+            {
+              "op": "FIELD",
+              "path": [
+                "user",
+                "role"
+              ]
+            },
+            {
+              "op": "CONST",
+              "value": "external"
+            }
+          ]
+        },
+        {
+          "op": "EQ",
+          "args": [
+            {
+              "op": "FIELD",
+              "path": [
+                "user",
+                "training_completed"
+              ]
+            },
+            {
+              "op": "CONST",
+              "value": true
+            }
+          ]
+        },
+        {
+          "op": "EQ",
+          "args": [
+            {
+              "op": "FIELD",
+              "path": [
+                "user",
+                "approval_active"
+              ]
+            },
+            {
+              "op": "CONST",
+              "value": true
+            }
+          ]
+        }
+      ]
+    },
+    "explanation": "Enforces that the user is not an external collaborator, has completed the required training, and has an active approval.",
+    "confidence": 1.0,
+    "raw_response": "{\"requirement_id\": \"R02\", \"candidates\": [{\"spec_name\": \"internal_research_access_control\", \"spec\": {\"op\": \"AND\", \"args\": [{\"op\": \"NEQ\", \"left\": {\"op\": \"FIELD\", \"path\": \"user.role\"}, \"right\": {\"op\": \"CONST\", \"value\": \"external\"}}, {\"op\": \"EQ\", \"left\": {\"op\": \"FIELD\", \"path\": \"user.training_completed\"}, \"right\": {\"op\": \"CONST\", \"value\": true}}, {\"op\": \"EQ\", \"left\": {\"op\": \"FIELD\", \"path\": \"user.approval_active\"}, \"right\": {\"op\": \"CONST\", \"value\": true}}]}, \"explanation\": \"Enforces that the user is not an external collaborator, has completed the required training, and has an active approval.\", \"confidence\": 1.0}]}",
+    "parse_success": true,
+    "parse_error": ""
+  },
+  {
+    "requirement_id": "R03",
+    "mode": "direct_translation",
+    "spec_name": "active_auditable_trained_approval",
+    "spec": {
+      "op": "AND",
+      "args": [
+        {
+          "op": "EQ",
+          "args": [
+            {
+              "op": "FIELD",
+              "path": [
+                "user",
+                "approval_active"
+              ]
+            },
+            {
+              "op": "CONST",
+              "value": true
+            }
+          ]
+        },
+        {
+          "op": "EQ",
+          "args": [
+            {
+              "op": "FIELD",
+              "path": [
+                "user",
+                "approval_expired"
+              ]
+            },
+            {
+              "op": "CONST",
+              "value": false
+            }
+          ]
+        },
+        {
+          "op": "EQ",
+          "args": [
+            {
+              "op": "FIELD",
+              "path": [
+                "context",
+                "logged"
+              ]
+            },
+            {
+              "op": "CONST",
+              "value": true
+            }
+          ]
+        },
+        {
+          "op": "EQ",
+          "args": [
+            {
+              "op": "FIELD",
+              "path": [
+                "user",
+                "training_completed"
+              ]
+            },
+            {
+              "op": "CONST",
+              "value": true
+            }
+          ]
+        }
+      ]
+    },
+    "explanation": "Enforces that the user's approval is active, not expired, that the access is logged (auditable), and that the user has completed training.",
+    "confidence": 1.0,
+    "raw_response": "{\"requirement_id\": \"R03\", \"candidates\": [{\"spec_name\": \"active_auditable_trained_approval\", \"spec\": {\"op\": \"AND\", \"args\": [{\"op\": \"EQ\", \"left\": {\"op\": \"FIELD\", \"path\": \"user.approval_active\"}, \"right\": {\"op\": \"CONST\", \"value\": true}}, {\"op\": \"EQ\", \"left\": {\"op\": \"FIELD\", \"path\": \"user.approval_expired\"}, \"right\": {\"op\": \"CONST\", \"value\": false}}, {\"op\": \"EQ\", \"left\": {\"op\": \"FIELD\", \"path\": \"context.logged\"}, \"right\": {\"op\": \"CONST\", \"value\": true}}, {\"op\": \"EQ\", \"left\": {\"op\": \"FIELD\", \"path\": \"user.training_completed\"}, \"right\": {\"op\": \"CONST\", \"value\": true}}]}, \"explanation\": \"Enforces that the user's approval is active, not expired, that the access is logged (auditable), and that the user has completed training.\", \"confidence\": 1.0}]}",
+    "parse_success": true,
+    "parse_error": ""
+  },
+  {
+    "requirement_id": "R03",
+    "mode": "obligation_guided",
+    "spec_name": "active_unexpired_audited_trained_access",
+    "spec": {
+      "op": "AND",
+      "args": [
+        {
+          "op": "EQ",
+          "args": [
+            {
+              "op": "FIELD",
+              "path": [
+                "user",
+                "approval_active"
+              ]
+            },
+            {
+              "op": "CONST",
+              "value": true
+            }
+          ]
+        },
+        {
+          "op": "EQ",
+          "args": [
+            {
+              "op": "FIELD",
+              "path": [
+                "user",
+                "approval_expired"
+              ]
+            },
+            {
+              "op": "CONST",
+              "value": false
+            }
+          ]
+        },
+        {
+          "op": "EQ",
+          "args": [
+            {
+              "op": "FIELD",
+              "path": [
+                "context",
+                "logged"
+              ]
+            },
+            {
+              "op": "CONST",
+              "value": true
+            }
+          ]
+        },
+        {
+          "op": "EQ",
+          "args": [
+            {
+              "op": "FIELD",
+              "path": [
+                "user",
+                "training_completed"
+              ]
+            },
+            {
+              "op": "CONST",
+              "value": true
+            }
+          ]
+        }
+      ]
+    },
+    "explanation": "Ensures that access is only granted if the user's approval is active (R03-O1), the approval is not expired (R03-O2), the session is logged for auditability (R03-O3), and the user has completed training (R03-O4).",
+    "confidence": 1.0,
+    "raw_response": "{\"requirement_id\": \"R03\", \"candidates\": [{\"spec_name\": \"active_unexpired_audited_trained_access\", \"spec\": {\"op\": \"AND\", \"args\": [{\"op\": \"EQ\", \"left\": {\"op\": \"FIELD\", \"path\": \"user.approval_active\"}, \"right\": {\"op\": \"CONST\", \"value\": true}}, {\"op\": \"EQ\", \"left\": {\"op\": \"FIELD\", \"path\": \"user.approval_expired\"}, \"right\": {\"op\": \"CONST\", \"value\": false}}, {\"op\": \"EQ\", \"left\": {\"op\": \"FIELD\", \"path\": \"context.logged\"}, \"right\": {\"op\": \"CONST\", \"value\": true}}, {\"op\": \"EQ\", \"left\": {\"op\": \"FIELD\", \"path\": \"user.training_completed\"}, \"right\": {\"op\": \"CONST\", \"value\": true}}]}, \"explanation\": \"Ensures that access is only granted if the user's approval is active (R03-O1), the approval is not expired (R03-O2), the session is logged for auditability (R03-O3), and the user has completed training (R03-O4).\", \"confidence\": 1.0}]}",
+    "parse_success": true,
+    "parse_error": ""
+  },
+  {
+    "requirement_id": "R03",
+    "mode": "adversarial_review",
+    "spec_name": "active_unexpired_auditable_trained",
+    "spec": {
+      "op": "AND",
+      "args": [
+        {
+          "op": "EQ",
+          "args": [
+            {
+              "op": "FIELD",
+              "path": [
+                "user",
+                "approval_active"
+              ]
+            },
+            {
+              "op": "CONST",
+              "value": true
+            }
+          ]
+        },
+        {
+          "op": "EQ",
+          "args": [
+            {
+              "op": "FIELD",
+              "path": [
+                "user",
+                "approval_expired"
+              ]
+            },
+            {
+              "op": "CONST",
+              "value": false
+            }
+          ]
+        },
+        {
+          "op": "EQ",
+          "args": [
+            {
+              "op": "FIELD",
+              "path": [
+                "context",
+                "logged"
+              ]
+            },
+            {
+              "op": "CONST",
+              "value": true
+            }
+          ]
+        },
+        {
+          "op": "EQ",
+          "args": [
+            {
+              "op": "FIELD",
+              "path": [
+                "user",
+                "training_completed"
+              ]
+            },
+            {
+              "op": "CONST",
+              "value": true
+            }
+          ]
+        }
+      ]
+    },
+    "explanation": "Enforces that access is only allowed when approval is active, approval is not expired, the session is logged (auditable), and the user has completed training.",
+    "confidence": 1.0,
+    "raw_response": "{\"requirement_id\": \"R03\", \"candidates\": [{\"spec_name\": \"active_unexpired_auditable_trained\", \"spec\": {\"op\": \"AND\", \"args\": [{\"op\": \"EQ\", \"left\": {\"op\": \"FIELD\", \"path\": \"user.approval_active\"}, \"right\": {\"op\": \"CONST\", \"value\": true}}, {\"op\": \"EQ\", \"left\": {\"op\": \"FIELD\", \"path\": \"user.approval_expired\"}, \"right\": {\"op\": \"CONST\", \"value\": false}}, {\"op\": \"EQ\", \"left\": {\"op\": \"FIELD\", \"path\": \"context.logged\"}, \"right\": {\"op\": \"CONST\", \"value\": true}}, {\"op\": \"EQ\", \"left\": {\"op\": \"FIELD\", \"path\": \"user.training_completed\"}, \"right\": {\"op\": \"CONST\", \"value\": true}}]}, \"explanation\": \"Enforces that access is only allowed when approval is active, approval is not expired, the session is logged (auditable), and the user has completed training.\", \"confidence\": 1.0}]}",
+    "parse_success": true,
+    "parse_error": ""
+  },
+  {
+    "requirement_id": "R04",
+    "mode": "direct_translation",
+    "spec_name": "active_non_expired_logged_access",
+    "spec": {
+      "op": "AND",
+      "args": [
+        {
+          "op": "EQ",
+          "args": [
+            {
+              "op": "FIELD",
+              "path": [
+                "user",
+                "approval_expired"
+              ]
+            },
+            {
+              "op": "CONST",
+              "value": false
+            }
+          ]
+        },
+        {
+          "op": "EQ",
+          "args": [
+            {
+              "op": "FIELD",
+              "path": [
+                "user",
+                "approval_active"
+              ]
+            },
+            {
+              "op": "CONST",
+              "value": true
+            }
+          ]
+        },
+        {
+          "op": "GE",
+          "args": [
+            {
+              "op": "FIELD",
+              "path": [
+                "user",
+                "clearance"
+              ]
+            },
+            {
+              "op": "FIELD",
+              "path": [
+                "record",
+                "risk_level"
+              ]
+            }
+          ]
+        },
+        {
+          "op": "EQ",
+          "args": [
+            {
+              "op": "FIELD",
+              "path": [
+                "context",
+                "logged"
+              ]
+            },
+            {
+              "op": "CONST",
+              "value": true
+            }
+          ]
+        }
+      ]
+    },
+    "explanation": "Ensures that access is only granted if the user's approval is active and not expired, their clearance level is greater than or equal to the record's risk level, and the access event is logged.",
+    "confidence": 1.0,
+    "raw_response": "{\"requirement_id\": \"R04\", \"candidates\": [{\"spec_name\": \"active_non_expired_logged_access\", \"spec\": {\"op\": \"AND\", \"args\": [{\"op\": \"EQ\", \"left\": {\"op\": \"FIELD\", \"path\": \"user.approval_expired\"}, \"right\": {\"op\": \"CONST\", \"value\": false}}, {\"op\": \"EQ\", \"left\": {\"op\": \"FIELD\", \"path\": \"user.approval_active\"}, \"right\": {\"op\": \"CONST\", \"value\": true}}, {\"op\": \"GE\", \"left\": {\"op\": \"FIELD\", \"path\": \"user.clearance\"}, \"right\": {\"op\": \"FIELD\", \"path\": \"record.risk_level\"}}, {\"op\": \"EQ\", \"left\": {\"op\": \"FIELD\", \"path\": \"context.logged\"}, \"right\": {\"op\": \"CONST\", \"value\": true}}]}, \"explanation\": \"Ensures that access is only granted if the user's approval is active and not expired, their clearance level is greater than or equal to the record's risk level, and the access event is logged.\", \"confidence\": 1.0}]}",
+    "parse_success": true,
+    "parse_error": ""
+  },
+  {
+    "requirement_id": "R04",
+    "mode": "obligation_guided",
+    "spec_name": "expired_approval_and_logging_check",
+    "spec": {
+      "op": "AND",
+      "args": [
+        {
+          "op": "EQ",
+          "args": [
+            {
+              "op": "FIELD",
+              "path": [
+                "user",
+                "approval_active"
+              ]
+            },
+            {
+              "op": "CONST",
+              "value": true
+            }
+          ]
+        },
+        {
+          "op": "EQ",
+          "args": [
+            {
+              "op": "FIELD",
+              "path": [
+                "user",
+                "approval_expired"
+              ]
+            },
+            {
+              "op": "CONST",
+              "value": false
+            }
+          ]
+        },
+        {
+          "op": "GE",
+          "args": [
+            {
+              "op": "FIELD",
+              "path": [
+                "user",
+                "clearance"
+              ]
+            },
+            {
+              "op": "FIELD",
+              "path": [
+                "record",
+                "risk_level"
+              ]
+            }
+          ]
+        },
+        {
+          "op": "EQ",
+          "args": [
+            {
+              "op": "FIELD",
+              "path": [
+                "context",
+                "logged"
+              ]
+            },
+            {
+              "op": "CONST",
+              "value": true
+            }
+          ]
+        }
+      ]
+    },
+    "explanation": "Ensures that user approval is active and not expired, the user's clearance level is greater than or equal to the record's risk level, and the access is logged.",
+    "confidence": 1.0,
+    "raw_response": "{\"requirement_id\": \"R04\", \"candidates\": [{\"spec_name\": \"expired_approval_and_logging_check\", \"spec\": {\"op\": \"AND\", \"args\": [{\"op\": \"EQ\", \"left\": {\"op\": \"FIELD\", \"path\": \"user.approval_active\"}, \"right\": {\"op\": \"CONST\", \"value\": true}}, {\"op\": \"EQ\", \"left\": {\"op\": \"FIELD\", \"path\": \"user.approval_expired\"}, \"right\": {\"op\": \"CONST\", \"value\": false}}, {\"op\": \"GE\", \"left\": {\"op\": \"FIELD\", \"path\": \"user.clearance\"}, \"right\": {\"op\": \"FIELD\", \"path\": \"record.risk_level\"}}, {\"op\": \"EQ\", \"left\": {\"op\": \"FIELD\", \"path\": \"context.logged\"}, \"right\": {\"op\": \"CONST\", \"value\": true}}]}, \"explanation\": \"Ensures that user approval is active and not expired, the user's clearance level is greater than or equal to the record's risk level, and the access is logged.\", \"confidence\": 1.0}]}",
+    "parse_success": true,
+    "parse_error": ""
+  },
+  {
+    "requirement_id": "R04",
+    "mode": "adversarial_review",
+    "spec_name": "expired_approval_and_logging_check",
+    "spec": {
+      "op": "AND",
+      "args": [
+        {
+          "op": "EQ",
+          "args": [
+            {
+              "op": "FIELD",
+              "path": [
+                "user",
+                "approval_expired"
+              ]
+            },
+            {
+              "op": "CONST",
+              "value": false
+            }
+          ]
+        },
+        {
+          "op": "EQ",
+          "args": [
+            {
+              "op": "FIELD",
+              "path": [
+                "user",
+                "approval_active"
+              ]
+            },
+            {
+              "op": "CONST",
+              "value": true
+            }
+          ]
+        },
+        {
+          "op": "GE",
+          "args": [
+            {
+              "op": "FIELD",
+              "path": [
+                "user",
+                "clearance"
+              ]
+            },
+            {
+              "op": "FIELD",
+              "path": [
+                "record",
+                "risk_level"
+              ]
+            }
+          ]
+        },
+        {
+          "op": "EQ",
+          "args": [
+            {
+              "op": "FIELD",
+              "path": [
+                "context",
+                "logged"
+              ]
+            },
+            {
+              "op": "CONST",
+              "value": true
+            }
+          ]
+        }
+      ]
+    },
+    "explanation": "Ensures that access is only authorized if the user's approval is active, not expired, their clearance level is at least equal to the record's risk level, and the access is being logged.",
+    "confidence": 1.0,
+    "raw_response": "{\"requirement_id\": \"R04\", \"candidates\": [{\"spec_name\": \"expired_approval_and_logging_check\", \"spec\": {\"op\": \"AND\", \"args\": [{\"op\": \"EQ\", \"left\": {\"op\": \"FIELD\", \"path\": \"user.approval_expired\"}, \"right\": {\"op\": \"CONST\", \"value\": false}}, {\"op\": \"EQ\", \"left\": {\"op\": \"FIELD\", \"path\": \"user.approval_active\"}, \"right\": {\"op\": \"CONST\", \"value\": true}}, {\"op\": \"GE\", \"left\": {\"op\": \"FIELD\", \"path\": \"user.clearance\"}, \"right\": {\"op\": \"FIELD\", \"path\": \"record.risk_level\"}}, {\"op\": \"EQ\", \"left\": {\"op\": \"FIELD\", \"path\": \"context.logged\"}, \"right\": {\"op\": \"CONST\", \"value\": true}}]}, \"explanation\": \"Ensures that access is only authorized if the user's approval is active, not expired, their clearance level is at least equal to the record's risk level, and the access is being logged.\", \"confidence\": 1.0}]}",
+    "parse_success": true,
+    "parse_error": ""
+  },
+  {
+    "requirement_id": "R05",
+    "mode": "direct_translation",
+    "spec_name": "external_collaborator_restrictions",
+    "spec": {
+      "op": "OR",
+      "args": [
+        {
+          "op": "NEQ",
+          "args": [
+            {
+              "op": "FIELD",
+              "path": [
+                "user",
+                "role"
+              ]
+            },
+            {
+              "op": "CONST",
+              "value": "external"
+            }
+          ]
+        },
+        {
+          "op": "AND",
+          "args": [
+            {
+              "op": "EQ",
+              "args": [
+                {
+                  "op": "FIELD",
+                  "path": [
+                    "record",
+                    "anonymized"
+                  ]
+                },
+                {
+                  "op": "CONST",
+                  "value": true
+                }
+              ]
+            },
+            {
+              "op": "EQ",
+              "args": [
+                {
+                  "op": "FIELD",
+                  "path": [
+                    "record",
+                    "sensitive"
+                  ]
+                },
+                {
+                  "op": "CONST",
+                  "value": false
+                }
+              ]
+            },
+            {
+              "op": "LE",
+              "args": [
+                {
+                  "op": "FIELD",
+                  "path": [
+                    "record",
+                    "risk_level"
+                  ]
+                },
+                {
+                  "op": "CONST",
+                  "value": 2
+                }
+              ]
+            },
+            {
+              "op": "EQ",
+              "args": [
+                {
+                  "op": "FIELD",
+                  "path": [
+                    "context",
+                    "logged"
+                  ]
+                },
+                {
+                  "op": "CONST",
+                  "value": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "explanation": "If the user is an external collaborator, they are restricted to accessing records that are anonymized, non-sensitive, have a risk level of 2 (moderate) or lower, and the access must be logged.",
+    "confidence": 0.95,
+    "raw_response": "{\"requirement_id\": \"R05\", \"candidates\": [{\"spec_name\": \"external_collaborator_restrictions\", \"spec\": {\"op\": \"OR\", \"args\": [{\"op\": \"NEQ\", \"left\": {\"op\": \"FIELD\", \"path\": \"user.role\"}, \"right\": {\"op\": \"CONST\", \"value\": \"external\"}}, {\"op\": \"AND\", \"args\": [{\"op\": \"EQ\", \"left\": {\"op\": \"FIELD\", \"path\": \"record.anonymized\"}, \"right\": {\"op\": \"CONST\", \"value\": true}}, {\"op\": \"EQ\", \"left\": {\"op\": \"FIELD\", \"path\": \"record.sensitive\"}, \"right\": {\"op\": \"CONST\", \"value\": false}}, {\"op\": \"LE\", \"left\": {\"op\": \"FIELD\", \"path\": \"record.risk_level\"}, \"right\": {\"op\": \"CONST\", \"value\": 2}}, {\"op\": \"EQ\", \"left\": {\"op\": \"FIELD\", \"path\": \"context.logged\"}, \"right\": {\"op\": \"CONST\", \"value\": true}}]}]}, \"explanation\": \"If the user is an external collaborator, they are restricted to accessing records that are anonymized, non-sensitive, have a risk level of 2 (moderate) or lower, and the access must be logged.\", \"confidence\": 0.95}]}",
+    "parse_success": true,
+    "parse_error": ""
+  },
+  {
+    "requirement_id": "R05",
+    "mode": "obligation_guided",
+    "spec_name": "external_collaborator_restrictions",
+    "spec": {
+      "op": "OR",
+      "args": [
+        {
+          "op": "NOT",
+          "arg": {
+            "op": "EQ",
+            "args": [
+              {
+                "op": "FIELD",
+                "path": [
+                  "user",
+                  "role"
+                ]
+              },
+              {
+                "op": "CONST",
+                "value": "external"
+              }
+            ]
+          }
+        },
+        {
+          "op": "AND",
+          "args": [
+            {
+              "op": "EQ",
+              "args": [
+                {
+                  "op": "FIELD",
+                  "path": [
+                    "record",
+                    "anonymized"
+                  ]
+                },
+                {
+                  "op": "CONST",
+                  "value": true
+                }
+              ]
+            },
+            {
+              "op": "EQ",
+              "args": [
+                {
+                  "op": "FIELD",
+                  "path": [
+                    "record",
+                    "sensitive"
+                  ]
+                },
+                {
+                  "op": "CONST",
+                  "value": false
+                }
+              ]
+            },
+            {
+              "op": "LE",
+              "args": [
+                {
+                  "op": "FIELD",
+                  "path": [
+                    "record",
+                    "risk_level"
+                  ]
+                },
+                {
+                  "op": "CONST",
+                  "value": 2
+                }
+              ]
+            },
+            {
+              "op": "EQ",
+              "args": [
+                {
+                  "op": "FIELD",
+                  "path": [
+                    "context",
+                    "logged"
+                  ]
+                },
+                {
+                  "op": "CONST",
+                  "value": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "explanation": "Ensures that if the accessing user is an external collaborator, the accessed record must be anonymized, non-sensitive, with a risk level of at most 2 (moderate), and the access must be logged.",
+    "confidence": 1.0,
+    "raw_response": "{\"requirement_id\": \"R05\", \"candidates\": [{\"spec_name\": \"external_collaborator_restrictions\", \"spec\": {\"op\": \"OR\", \"args\": [{\"op\": \"NOT\", \"arg\": {\"op\": \"EQ\", \"left\": {\"op\": \"FIELD\", \"path\": \"user.role\"}, \"right\": {\"op\": \"CONST\", \"value\": \"external\"}}}, {\"op\": \"AND\", \"args\": [{\"op\": \"EQ\", \"left\": {\"op\": \"FIELD\", \"path\": \"record.anonymized\"}, \"right\": {\"op\": \"CONST\", \"value\": true}}, {\"op\": \"EQ\", \"left\": {\"op\": \"FIELD\", \"path\": \"record.sensitive\"}, \"right\": {\"op\": \"CONST\", \"value\": false}}, {\"op\": \"LE\", \"left\": {\"op\": \"FIELD\", \"path\": \"record.risk_level\"}, \"right\": {\"op\": \"CONST\", \"value\": 2}}, {\"op\": \"EQ\", \"left\": {\"op\": \"FIELD\", \"path\": \"context.logged\"}, \"right\": {\"op\": \"CONST\", \"value\": true}}]}]}, \"explanation\": \"Ensures that if the accessing user is an external collaborator, the accessed record must be anonymized, non-sensitive, with a risk level of at most 2 (moderate), and the access must be logged.\", \"confidence\": 1.0}]}",
+    "parse_success": true,
+    "parse_error": ""
+  },
+  {
+    "requirement_id": "R05",
+    "mode": "adversarial_review",
+    "spec_name": "external_collaborator_restrictions",
+    "spec": {
+      "op": "OR",
+      "args": [
+        {
+          "op": "NEQ",
+          "args": [
+            {
+              "op": "FIELD",
+              "path": [
+                "user",
+                "role"
+              ]
+            },
+            {
+              "op": "CONST",
+              "value": "external"
+            }
+          ]
+        },
+        {
+          "op": "AND",
+          "args": [
+            {
+              "op": "EQ",
+              "args": [
+                {
+                  "op": "FIELD",
+                  "path": [
+                    "record",
+                    "anonymized"
+                  ]
+                },
+                {
+                  "op": "CONST",
+                  "value": true
+                }
+              ]
+            },
+            {
+              "op": "EQ",
+              "args": [
+                {
+                  "op": "FIELD",
+                  "path": [
+                    "record",
+                    "sensitive"
+                  ]
+                },
+                {
+                  "op": "CONST",
+                  "value": false
+                }
+              ]
+            },
+            {
+              "op": "LE",
+              "args": [
+                {
+                  "op": "FIELD",
+                  "path": [
+                    "record",
+                    "risk_level"
+                  ]
+                },
+                {
+                  "op": "CONST",
+                  "value": 2
+                }
+              ]
+            },
+            {
+              "op": "EQ",
+              "args": [
+                {
+                  "op": "FIELD",
+                  "path": [
+                    "context",
+                    "logged"
+                  ]
+                },
+                {
+                  "op": "CONST",
+                  "value": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "explanation": "Ensures that if the user is an external collaborator, they are restricted to accessing records that are anonymized, non-sensitive, of low-to-moderate risk (level <= 2), and that the access is logged. For other roles, this specific restriction does not apply.",
+    "confidence": 1.0,
+    "raw_response": "{\"requirement_id\": \"R05\", \"candidates\": [{\"spec_name\": \"external_collaborator_restrictions\", \"spec\": {\"op\": \"OR\", \"args\": [{\"op\": \"NEQ\", \"left\": {\"op\": \"FIELD\", \"path\": \"user.role\"}, \"right\": {\"op\": \"CONST\", \"value\": \"external\"}}, {\"op\": \"AND\", \"args\": [{\"op\": \"EQ\", \"left\": {\"op\": \"FIELD\", \"path\": \"record.anonymized\"}, \"right\": {\"op\": \"CONST\", \"value\": true}}, {\"op\": \"EQ\", \"left\": {\"op\": \"FIELD\", \"path\": \"record.sensitive\"}, \"right\": {\"op\": \"CONST\", \"value\": false}}, {\"op\": \"LE\", \"left\": {\"op\": \"FIELD\", \"path\": \"record.risk_level\"}, \"right\": {\"op\": \"CONST\", \"value\": 2}}, {\"op\": \"EQ\", \"left\": {\"op\": \"FIELD\", \"path\": \"context.logged\"}, \"right\": {\"op\": \"CONST\", \"value\": true}}]}]}, \"explanation\": \"Ensures that if the user is an external collaborator, they are restricted to accessing records that are anonymized, non-sensitive, of low-to-moderate risk (level <= 2), and that the access is logged. For other roles, this specific restriction does not apply.\", \"confidence\": 1.0}]}",
+    "parse_success": true,
+    "parse_error": ""
+  },
+  {
+    "requirement_id": "R06",
+    "mode": "direct_translation",
+    "spec_name": "emergency_access_requirements",
+    "spec": {
+      "op": "AND",
+      "args": [
+        {
+          "op": "EQ",
+          "args": [
+            {
+              "op": "FIELD",
+              "path": [
+                "context",
+                "emergency"
+              ]
+            },
+            {
+              "op": "CONST",
+              "value": true
+            }
+          ]
+        },
+        {
+          "op": "EQ",
+          "args": [
+            {
+              "op": "FIELD",
+              "path": [
+                "context",
+                "logged"
+              ]
+            },
+            {
+              "op": "CONST",
+              "value": true
+            }
+          ]
+        },
+        {
+          "op": "EQ",
+          "args": [
+            {
+              "op": "FIELD",
+              "path": [
+                "user",
+                "approval_expired"
+              ]
+            },
+            {
+              "op": "CONST",
+              "value": false
+            }
+          ]
+        },
+        {
+          "op": "OR",
+          "args": [
+            {
+              "op": "EQ",
+              "args": [
+                {
+                  "op": "FIELD",
+                  "path": [
+                    "user",
+                    "role"
+                  ]
+                },
+                {
+                  "op": "CONST",
+                  "value": "PI"
+                }
+              ]
+            },
+            {
+              "op": "GE",
+              "args": [
+                {
+                  "op": "FIELD",
+                  "path": [
+                    "user",
+                    "clearance"
+                  ]
+                },
+                {
+                  "op": "FIELD",
+                  "path": [
+                    "record",
+                    "risk_level"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "explanation": "Ensures emergency access is only granted when the emergency context is true, the access is logged, the user's approval is not expired, and the user is either a PI or has a clearance level greater than or equal to the record's risk level.",
+    "confidence": 1.0,
+    "raw_response": "{\"requirement_id\": \"R06\", \"candidates\": [{\"spec_name\": \"emergency_access_requirements\", \"spec\": {\"op\": \"AND\", \"args\": [{\"op\": \"EQ\", \"left\": {\"op\": \"FIELD\", \"path\": \"context.emergency\"}, \"right\": {\"op\": \"CONST\", \"value\": true}}, {\"op\": \"EQ\", \"left\": {\"op\": \"FIELD\", \"path\": \"context.logged\"}, \"right\": {\"op\": \"CONST\", \"value\": true}}, {\"op\": \"EQ\", \"left\": {\"op\": \"FIELD\", \"path\": \"user.approval_expired\"}, \"right\": {\"op\": \"CONST\", \"value\": false}}, {\"op\": \"OR\", \"args\": [{\"op\": \"EQ\", \"left\": {\"op\": \"FIELD\", \"path\": \"user.role\"}, \"right\": {\"op\": \"CONST\", \"value\": \"PI\"}}, {\"op\": \"GE\", \"left\": {\"op\": \"FIELD\", \"path\": \"user.clearance\"}, \"right\": {\"op\": \"FIELD\", \"path\": \"record.risk_level\"}}]}]}, \"explanation\": \"Ensures emergency access is only granted when the emergency context is true, the access is logged, the user's approval is not expired, and the user is either a PI or has a clearance level greater than or equal to the record's risk level.\", \"confidence\": 1.0}]}",
+    "parse_success": true,
+    "parse_error": ""
+  },
+  {
+    "requirement_id": "R06",
+    "mode": "obligation_guided",
+    "spec_name": "emergency_access_policy",
+    "spec": {
+      "op": "AND",
+      "args": [
+        {
+          "op": "EQ",
+          "args": [
+            {
+              "op": "FIELD",
+              "path": [
+                "context",
+                "emergency"
+              ]
+            },
+            {
+              "op": "CONST",
+              "value": true
+            }
+          ]
+        },
+        {
+          "op": "EQ",
+          "args": [
+            {
+              "op": "FIELD",
+              "path": [
+                "context",
+                "logged"
+              ]
+            },
+            {
+              "op": "CONST",
+              "value": true
+            }
+          ]
+        },
+        {
+          "op": "EQ",
+          "args": [
+            {
+              "op": "FIELD",
+              "path": [
+                "user",
+                "approval_expired"
+              ]
+            },
+            {
+              "op": "CONST",
+              "value": false
+            }
+          ]
+        },
+        {
+          "op": "OR",
+          "args": [
+            {
+              "op": "EQ",
+              "args": [
+                {
+                  "op": "FIELD",
+                  "path": [
+                    "user",
+                    "role"
+                  ]
+                },
+                {
+                  "op": "CONST",
+                  "value": "PI"
+                }
+              ]
+            },
+            {
+              "op": "GE",
+              "args": [
+                {
+                  "op": "FIELD",
+                  "path": [
+                    "user",
+                    "clearance"
+                  ]
+                },
+                {
+                  "op": "FIELD",
+                  "path": [
+                    "record",
+                    "risk_level"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "explanation": "Ensures emergency access is only granted when context.emergency is true, the access is logged, the user's approval is not expired, and the user is either a PI or has sufficient clearance.",
+    "confidence": 1.0,
+    "raw_response": "{\n  \"requirement_id\": \"R06\",\n  \"candidates\": [\n    {\n      \"spec_name\": \"emergency_access_policy\",\n      \"spec\": {\n        \"op\": \"AND\",\n        \"args\": [\n          {\n            \"op\": \"EQ\",\n            \"left\": {\n              \"op\": \"FIELD\",\n              \"path\": \"context.emergency\"\n            },\n            \"right\": {\n              \"op\": \"CONST\",\n              \"value\": true\n            }\n          },\n          {\n            \"op\": \"EQ\",\n            \"left\": {\n              \"op\": \"FIELD\",\n              \"path\": \"context.logged\"\n            },\n            \"right\": {\n              \"op\": \"CONST\",\n              \"value\": true\n            }\n          },\n          {\n            \"op\": \"EQ\",\n            \"left\": {\n              \"op\": \"FIELD\",\n              \"path\": \"user.approval_expired\"\n            },\n            \"right\": {\n              \"op\": \"CONST\",\n              \"value\": false\n            }\n          },\n          {\n            \"op\": \"OR\",\n            \"args\": [\n              {\n                \"op\": \"EQ\",\n                \"left\": {\n                  \"op\": \"FIELD\",\n                  \"path\": \"user.role\"\n                },\n                \"right\": {\n                  \"op\": \"CONST\",\n                  \"value\": \"PI\"\n                }\n              },\n              {\n                \"op\": \"GE\",\n                \"left\": {\n                  \"op\": \"FIELD\",\n                  \"path\": \"user.clearance\"\n                },\n                \"right\": {\n                  \"op\": \"FIELD\",\n                  \"path\": \"record.risk_level\"\n                }\n              }\n            ]\n          }\n        ]\n      },\n      \"explanation\": \"Ensures emergency access is only granted when context.emergency is true, the access is logged, the user's approval is not expired, and the user is either a PI or has sufficient clearance.\",\n      \"confidence\": 1.0\n    }\n  ]\n}",
+    "parse_success": true,
+    "parse_error": ""
+  },
+  {
+    "requirement_id": "R06",
+    "mode": "adversarial_review",
+    "spec_name": "emergency_access_policy",
+    "spec": {
+      "op": "AND",
+      "args": [
+        {
+          "op": "EQ",
+          "args": [
+            {
+              "op": "FIELD",
+              "path": [
+                "context",
+                "emergency"
+              ]
+            },
+            {
+              "op": "CONST",
+              "value": true
+            }
+          ]
+        },
+        {
+          "op": "EQ",
+          "args": [
+            {
+              "op": "FIELD",
+              "path": [
+                "context",
+                "logged"
+              ]
+            },
+            {
+              "op": "CONST",
+              "value": true
+            }
+          ]
+        },
+        {
+          "op": "EQ",
+          "args": [
+            {
+              "op": "FIELD",
+              "path": [
+                "user",
+                "approval_expired"
+              ]
+            },
+            {
+              "op": "CONST",
+              "value": false
+            }
+          ]
+        },
+        {
+          "op": "OR",
+          "args": [
+            {
+              "op": "EQ",
+              "args": [
+                {
+                  "op": "FIELD",
+                  "path": [
+                    "user",
+                    "role"
+                  ]
+                },
+                {
+                  "op": "CONST",
+                  "value": "PI"
+                }
+              ]
+            },
+            {
+              "op": "GE",
+              "args": [
+                {
+                  "op": "FIELD",
+                  "path": [
+                    "user",
+                    "clearance"
+                  ]
+                },
+                {
+                  "op": "FIELD",
+                  "path": [
+                    "record",
+                    "risk_level"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "explanation": "Ensures emergency access is only granted when context.emergency is true, the access is logged, user approval is not expired, and the user is either a PI or has clearance greater than or equal to the record's risk level.",
+    "confidence": 1.0,
+    "raw_response": "{\"requirement_id\": \"R06\", \"candidates\": [{\"spec_name\": \"emergency_access_policy\", \"spec\": {\"op\": \"AND\", \"args\": [{\"op\": \"EQ\", \"left\": {\"op\": \"FIELD\", \"path\": \"context.emergency\"}, \"right\": {\"op\": \"CONST\", \"value\": true}}, {\"op\": \"EQ\", \"left\": {\"op\": \"FIELD\", \"path\": \"context.logged\"}, \"right\": {\"op\": \"CONST\", \"value\": true}}, {\"op\": \"EQ\", \"left\": {\"op\": \"FIELD\", \"path\": \"user.approval_expired\"}, \"right\": {\"op\": \"CONST\", \"value\": false}}, {\"op\": \"OR\", \"args\": [{\"op\": \"EQ\", \"left\": {\"op\": \"FIELD\", \"path\": \"user.role\"}, \"right\": {\"op\": \"CONST\", \"value\": \"PI\"}}, {\"op\": \"GE\", \"left\": {\"op\": \"FIELD\", \"path\": \"user.clearance\"}, \"right\": {\"op\": \"FIELD\", \"path\": \"record.risk_level\"}}]}]}, \"explanation\": \"Ensures emergency access is only granted when context.emergency is true, the access is logged, user approval is not expired, and the user is either a PI or has clearance greater than or equal to the record's risk level.\", \"confidence\": 1.0}]}",
+    "parse_success": true,
+    "parse_error": ""
+  },
+  {
+    "requirement_id": "R07",
+    "mode": "direct_translation",
+    "spec_name": "high_risk_pi_access",
+    "spec": {
+      "op": "OR",
+      "args": [
+        {
+          "op": "LT",
+          "args": [
+            {
+              "op": "FIELD",
+              "path": [
+                "record",
+                "risk_level"
+              ]
+            },
+            {
+              "op": "CONST",
+              "value": 4
+            }
+          ]
+        },
+        {
+          "op": "AND",
+          "args": [
+            {
+              "op": "EQ",
+              "args": [
+                {
+                  "op": "FIELD",
+                  "path": [
+                    "user",
+                    "role"
+                  ]
+                },
+                {
+                  "op": "CONST",
+                  "value": "PI"
+                }
+              ]
+            },
+            {
+              "op": "GE",
+              "args": [
+                {
+                  "op": "FIELD",
+                  "path": [
+                    "user",
+                    "clearance"
+                  ]
+                },
+                {
+                  "op": "FIELD",
+                  "path": [
+                    "record",
+                    "risk_level"
+                  ]
+                }
+              ]
+            },
+            {
+              "op": "EQ",
+              "args": [
+                {
+                  "op": "FIELD",
+                  "path": [
+                    "user",
+                    "training_completed"
+                  ]
+                },
+                {
+                  "op": "CONST",
+                  "value": true
+                }
+              ]
+            },
+            {
+              "op": "EQ",
+              "args": [
+                {
+                  "op": "FIELD",
+                  "path": [
+                    "context",
+                    "logged"
+                  ]
+                },
+                {
+                  "op": "CONST",
+                  "value": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "explanation": "If a biological record is high-risk (risk_level >= 4), access is restricted to PIs who have sufficient clearance, completed training, and whose access is logged.",
+    "confidence": 1.0,
+    "raw_response": "{\"requirement_id\": \"R07\", \"candidates\": [{\"spec_name\": \"high_risk_pi_access\", \"spec\": {\"op\": \"OR\", \"args\": [{\"op\": \"LT\", \"left\": {\"op\": \"FIELD\", \"path\": \"record.risk_level\"}, \"right\": {\"op\": \"CONST\", \"value\": 4}}, {\"op\": \"AND\", \"args\": [{\"op\": \"EQ\", \"left\": {\"op\": \"FIELD\", \"path\": \"user.role\"}, \"right\": {\"op\": \"CONST\", \"value\": \"PI\"}}, {\"op\": \"GE\", \"left\": {\"op\": \"FIELD\", \"path\": \"user.clearance\"}, \"right\": {\"op\": \"FIELD\", \"path\": \"record.risk_level\"}}, {\"op\": \"EQ\", \"left\": {\"op\": \"FIELD\", \"path\": \"user.training_completed\"}, \"right\": {\"op\": \"CONST\", \"value\": true}}, {\"op\": \"EQ\", \"left\": {\"op\": \"FIELD\", \"path\": \"context.logged\"}, \"right\": {\"op\": \"CONST\", \"value\": true}}]}]}, \"explanation\": \"If a biological record is high-risk (risk_level >= 4), access is restricted to PIs who have sufficient clearance, completed training, and whose access is logged.\", \"confidence\": 1.0}]}",
+    "parse_success": true,
+    "parse_error": ""
+  },
+  {
+    "requirement_id": "R07",
+    "mode": "obligation_guided",
+    "spec_name": "high_risk_biosecurity_access",
+    "spec": {
+      "op": "OR",
+      "args": [
+        {
+          "op": "NOT",
+          "arg": {
+            "op": "GE",
+            "args": [
+              {
+                "op": "FIELD",
+                "path": [
+                  "record",
+                  "risk_level"
+                ]
+              },
+              {
+                "op": "CONST",
+                "value": 4
+              }
+            ]
+          }
+        },
+        {
+          "op": "AND",
+          "args": [
+            {
+              "op": "EQ",
+              "args": [
+                {
+                  "op": "FIELD",
+                  "path": [
+                    "user",
+                    "role"
+                  ]
+                },
+                {
+                  "op": "CONST",
+                  "value": "PI"
+                }
+              ]
+            },
+            {
+              "op": "GE",
+              "args": [
+                {
+                  "op": "FIELD",
+                  "path": [
+                    "user",
+                    "clearance"
+                  ]
+                },
+                {
+                  "op": "FIELD",
+                  "path": [
+                    "record",
+                    "risk_level"
+                  ]
+                }
+              ]
+            },
+            {
+              "op": "EQ",
+              "args": [
+                {
+                  "op": "FIELD",
+                  "path": [
+                    "user",
+                    "training_completed"
+                  ]
+                },
+                {
+                  "op": "CONST",
+                  "value": true
+                }
+              ]
+            },
+            {
+              "op": "EQ",
+              "args": [
+                {
+                  "op": "FIELD",
+                  "path": [
+                    "context",
+                    "logged"
+                  ]
+                },
+                {
+                  "op": "CONST",
+                  "value": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "explanation": "Enforces that if a record is high-risk (risk_level >= 4), access is granted only if the user is a PI, has sufficient clearance, has completed training, and the access is logged.",
+    "confidence": 1.0,
+    "raw_response": "{\"requirement_id\": \"R07\", \"candidates\": [{\"spec_name\": \"high_risk_biosecurity_access\", \"spec\": {\"op\": \"OR\", \"args\": [{\"op\": \"NOT\", \"arg\": {\"op\": \"GE\", \"left\": {\"op\": \"FIELD\", \"path\": \"record.risk_level\"}, \"right\": {\"op\": \"CONST\", \"value\": 4}}}, {\"op\": \"AND\", \"args\": [{\"op\": \"EQ\", \"left\": {\"op\": \"FIELD\", \"path\": \"user.role\"}, \"right\": {\"op\": \"CONST\", \"value\": \"PI\"}}, {\"op\": \"GE\", \"left\": {\"op\": \"FIELD\", \"path\": \"user.clearance\"}, \"right\": {\"op\": \"FIELD\", \"path\": \"record.risk_level\"}}, {\"op\": \"EQ\", \"left\": {\"op\": \"FIELD\", \"path\": \"user.training_completed\"}, \"right\": {\"op\": \"CONST\", \"value\": true}}, {\"op\": \"EQ\", \"left\": {\"op\": \"FIELD\", \"path\": \"context.logged\"}, \"right\": {\"op\": \"CONST\", \"value\": true}}]}]}, \"explanation\": \"Enforces that if a record is high-risk (risk_level >= 4), access is granted only if the user is a PI, has sufficient clearance, has completed training, and the access is logged.\", \"confidence\": 1.0}]}",
+    "parse_success": true,
+    "parse_error": ""
+  },
+  {
+    "requirement_id": "R07",
+    "mode": "adversarial_review",
+    "spec_name": null,
+    "spec": null,
+    "explanation": "",
+    "confidence": null,
+    "raw_response": "",
+    "parse_success": false,
+    "parse_error": "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.5-flash\\nPlease retry in 6.039012883s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-3.5-flash', 'location': 'global'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '6s'}]}}"
+  },
+  {
+    "requirement_id": "R08",
+    "mode": "direct_translation",
+    "spec_name": null,
+    "spec": null,
+    "explanation": "",
+    "confidence": null,
+    "raw_response": "",
+    "parse_success": false,
+    "parse_error": "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.5-flash\\nPlease retry in 59.289267349s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.5-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '59s'}]}}"
+  },
+  {
+    "requirement_id": "R08",
+    "mode": "obligation_guided",
+    "spec_name": null,
+    "spec": null,
+    "explanation": "",
+    "confidence": null,
+    "raw_response": "",
+    "parse_success": false,
+    "parse_error": "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.5-flash\\nPlease retry in 29.310852281s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.5-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '29s'}]}}"
+  },
+  {
+    "requirement_id": "R08",
+    "mode": "adversarial_review",
+    "spec_name": null,
+    "spec": null,
+    "explanation": "",
+    "confidence": null,
+    "raw_response": "",
+    "parse_success": false,
+    "parse_error": "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.5-flash\\nPlease retry in 19.821885402s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.5-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '19s'}]}}"
+  },
+  {
+    "requirement_id": "R09",
+    "mode": "direct_translation",
+    "spec_name": null,
+    "spec": null,
+    "explanation": "",
+    "confidence": null,
+    "raw_response": "",
+    "parse_success": false,
+    "parse_error": "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.5-flash\\nPlease retry in 14.269960711s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-3.5-flash', 'location': 'global'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '14s'}]}}"
+  },
+  {
+    "requirement_id": "R09",
+    "mode": "obligation_guided",
+    "spec_name": null,
+    "spec": null,
+    "explanation": "",
+    "confidence": null,
+    "raw_response": "",
+    "parse_success": false,
+    "parse_error": "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.5-flash\\nPlease retry in 8.146645189s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-3.5-flash', 'location': 'global'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '8s'}]}}"
+  },
+  {
+    "requirement_id": "R09",
+    "mode": "adversarial_review",
+    "spec_name": null,
+    "spec": null,
+    "explanation": "",
+    "confidence": null,
+    "raw_response": "",
+    "parse_success": false,
+    "parse_error": "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.5-flash\\nPlease retry in 2.338860099s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-3.5-flash', 'location': 'global'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '2s'}]}}"
+  },
+  {
+    "requirement_id": "R10",
+    "mode": "direct_translation",
+    "spec_name": null,
+    "spec": null,
+    "explanation": "",
+    "confidence": null,
+    "raw_response": "",
+    "parse_success": false,
+    "parse_error": "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.5-flash\\nPlease retry in 53.492073059s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.5-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '53s'}]}}"
+  },
+  {
+    "requirement_id": "R10",
+    "mode": "obligation_guided",
+    "spec_name": null,
+    "spec": null,
+    "explanation": "",
+    "confidence": null,
+    "raw_response": "",
+    "parse_success": false,
+    "parse_error": "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.5-flash\\nPlease retry in 47.011115115s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.5-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '47s'}]}}"
+  },
+  {
+    "requirement_id": "R10",
+    "mode": "adversarial_review",
+    "spec_name": null,
+    "spec": null,
+    "explanation": "",
+    "confidence": null,
+    "raw_response": "",
+    "parse_success": false,
+    "parse_error": "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.5-flash\\nPlease retry in 37.734970674s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.5-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '37s'}]}}"
+  }
+]

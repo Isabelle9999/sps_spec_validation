@@ -1,0 +1,150 @@
+[
+  {
+    "requirement": "External collaborators may access only anonymized, non-sensitive, low-to-moderate-risk records through logged access.",
+    "prompt_mode": "direct_translation",
+    "model_explanation": "If the user is an external collaborator, they are restricted to accessing records that are anonymized, non-sensitive, have a risk level of 2 (moderate) or lower, and the access must be logged.",
+    "generated_dsl_spec": "(user.role != \"external\" OR (record.anonymized = true AND record.sensitive = false AND record.risk_level <= 2 AND context.logged = true))",
+    "missing_obligations": [
+      "external role"
+    ],
+    "counterexample": {
+      "user": {
+        "role": "researcher",
+        "clearance": 4,
+        "training_completed": true,
+        "approval_active": true,
+        "approval_expired": false,
+        "supervised_by_pi": false
+      },
+      "record": {
+        "risk_level": 4,
+        "anonymized": false,
+        "sensitive": true
+      },
+      "context": {
+        "emergency": false,
+        "logged": true
+      }
+    },
+    "gold_output": false,
+    "candidate_output": true,
+    "smt_counterexample": {
+      "user": {
+        "role": "PI",
+        "clearance": 0,
+        "training_completed": false,
+        "approval_active": false,
+        "approval_expired": false,
+        "supervised_by_pi": false
+      },
+      "record": {
+        "risk_level": 0,
+        "anonymized": true,
+        "sensitive": false
+      },
+      "context": {
+        "emergency": false,
+        "logged": true
+      }
+    },
+    "interpretation": "This case shows how direct translation can miss safety-relevant obligations or produce behavior that is too permissive relative to the reference policy."
+  },
+  {
+    "requirement": "High-risk biological records are accessible only to PIs with sufficient clearance, completed training, and logged access.",
+    "prompt_mode": "obligation_guided",
+    "model_explanation": "Enforces that if a record is high-risk (risk_level >= 4), access is granted only if the user is a PI, has sufficient clearance, has completed training, and the access is logged.",
+    "generated_dsl_spec": "(NOT(record.risk_level >= 4) OR (user.role = \"PI\" AND user.clearance >= record.risk_level AND user.training_completed = true AND context.logged = true))",
+    "missing_obligations": [],
+    "counterexample": {
+      "user": {
+        "role": "PI",
+        "clearance": 2,
+        "training_completed": true,
+        "approval_active": false,
+        "approval_expired": false,
+        "supervised_by_pi": false
+      },
+      "record": {
+        "risk_level": 0,
+        "anonymized": false,
+        "sensitive": true
+      },
+      "context": {
+        "emergency": true,
+        "logged": false
+      }
+    },
+    "gold_output": false,
+    "candidate_output": true,
+    "smt_counterexample": {
+      "user": {
+        "role": "researcher",
+        "clearance": 0,
+        "training_completed": true,
+        "approval_active": false,
+        "approval_expired": false,
+        "supervised_by_pi": false
+      },
+      "record": {
+        "risk_level": 1,
+        "anonymized": false,
+        "sensitive": false
+      },
+      "context": {
+        "emergency": false,
+        "logged": true
+      }
+    },
+    "interpretation": "This case shows whether obligation-guided prompting improves traceability and validator scores by making the model attend to explicit safety obligations."
+  },
+  {
+    "requirement": "External collaborators may access only anonymized, non-sensitive, low-to-moderate-risk records through logged access.",
+    "prompt_mode": "adversarial_review",
+    "model_explanation": "Ensures that if the user is an external collaborator, they are restricted to accessing records that are anonymized, non-sensitive, of low-to-moderate risk (level <= 2), and that the access is logged. For other roles, this specific restriction does not apply.",
+    "generated_dsl_spec": "(user.role != \"external\" OR (record.anonymized = true AND record.sensitive = false AND record.risk_level <= 2 AND context.logged = true))",
+    "missing_obligations": [
+      "external role"
+    ],
+    "counterexample": {
+      "user": {
+        "role": "researcher",
+        "clearance": 4,
+        "training_completed": true,
+        "approval_active": true,
+        "approval_expired": false,
+        "supervised_by_pi": false
+      },
+      "record": {
+        "risk_level": 4,
+        "anonymized": false,
+        "sensitive": true
+      },
+      "context": {
+        "emergency": false,
+        "logged": true
+      }
+    },
+    "gold_output": false,
+    "candidate_output": true,
+    "smt_counterexample": {
+      "user": {
+        "role": "PI",
+        "clearance": 0,
+        "training_completed": false,
+        "approval_active": false,
+        "approval_expired": false,
+        "supervised_by_pi": false
+      },
+      "record": {
+        "risk_level": 0,
+        "anonymized": true,
+        "sensitive": false
+      },
+      "context": {
+        "emergency": false,
+        "logged": true
+      }
+    },
+    "interpretation": "This case shows the tradeoff of adversarial-review prompting: conservative reasoning can reduce unsafe allowance but may deny accesses that the requirement permits."
+  }
+]

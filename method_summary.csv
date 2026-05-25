@@ -1,0 +1,5 @@
+method,detection_rate,high_severity_detection_rate,avg_time_to_first_counterexample,false_positive_proxy
+manual_fixed_tests,0.6333333333333333,0.5531914893617021,2.02526321038277e-05,0.0
+random_sampling,0.9888888888888889,1.0,7.121348354620126e-05,0.0
+property_sampled_behavior,0.9888888888888889,1.0,,0.0
+full_multi_oracle,0.9888888888888889,1.0,,0.0

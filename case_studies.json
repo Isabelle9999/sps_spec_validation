@@ -1,0 +1,112 @@
+[
+  {
+    "requirement": "External collaborators may access only anonymized, non-sensitive, low-to-moderate-risk records through logged access.",
+    "candidate_name": "over-permissive Boolean connective",
+    "suspected_issue": "under-constrained",
+    "counterexample": {
+      "user": {
+        "role": "researcher",
+        "clearance": 4,
+        "training_completed": true,
+        "approval_active": true,
+        "approval_expired": false,
+        "supervised_by_pi": false
+      },
+      "record": {
+        "risk_level": 4,
+        "anonymized": false,
+        "sensitive": true
+      },
+      "context": {
+        "emergency": false,
+        "logged": true
+      }
+    },
+    "gold_output": false,
+    "candidate_output": true,
+    "missing_obligations": [],
+    "interpretation": "The candidate allows an input that the gold specification denies. This is the most safety-critical pattern because the generated policy has lost at least one guard that blocks unsafe access."
+  },
+  {
+    "requirement": "Access to controlled biological records requires clearance at least equal to the record risk, completed training, and active approval.",
+    "candidate_name": "unnecessary PI-only restriction",
+    "suspected_issue": "over-constrained",
+    "counterexample": {
+      "user": {
+        "role": "external",
+        "clearance": 4,
+        "training_completed": true,
+        "approval_active": true,
+        "approval_expired": true,
+        "supervised_by_pi": true
+      },
+      "record": {
+        "risk_level": 1,
+        "anonymized": true,
+        "sensitive": true
+      },
+      "context": {
+        "emergency": false,
+        "logged": false
+      }
+    },
+    "gold_output": true,
+    "candidate_output": false,
+    "missing_obligations": [],
+    "interpretation": "The candidate denies an input that the gold specification allows. This is less directly unsafe, but it indicates that the generated specification does not faithfully implement the stated access policy."
+  },
+  {
+    "requirement": "High-risk biological records are accessible only to PIs with sufficient clearance, completed training, and logged access.",
+    "candidate_name": "missing key obligation",
+    "suspected_issue": "metamorphic violation",
+    "counterexample": {
+      "relation": "risk_monotonicity",
+      "base_input": {
+        "user": {
+          "role": "external",
+          "clearance": 5,
+          "training_completed": true,
+          "approval_active": true,
+          "approval_expired": false,
+          "supervised_by_pi": false
+        },
+        "record": {
+          "risk_level": 3,
+          "anonymized": true,
+          "sensitive": false
+        },
+        "context": {
+          "emergency": false,
+          "logged": true
+        }
+      },
+      "follow_up_input": {
+        "user": {
+          "role": "external",
+          "clearance": 5,
+          "training_completed": true,
+          "approval_active": true,
+          "approval_expired": false,
+          "supervised_by_pi": false
+        },
+        "record": {
+          "risk_level": 4,
+          "anonymized": true,
+          "sensitive": false
+        },
+        "context": {
+          "emergency": false,
+          "logged": true
+        }
+      },
+      "base_output": false,
+      "follow_up_output": true
+    },
+    "gold_output": false,
+    "candidate_output": false,
+    "missing_obligations": [
+      "PI only"
+    ],
+    "interpretation": "The candidate violates a metamorphic safety relation. Even when sampled behavioral agreement is high, this relation exposes an inconsistent response to a controlled safety-relevant input change."
+  }
+]
